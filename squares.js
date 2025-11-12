@@ -11,3 +11,4 @@ window.onload = function () {
         squarearea.appendChild(newSquare);
     }
 }
+
