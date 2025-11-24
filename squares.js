@@ -37,10 +37,18 @@ function addSquare() {
     var squarearea = document.getElementById("squarearea");
     var newSquare = document.createElement('div');
     newSquare.className = "square";
-    newSquare.style.left = parseInt(Math.random() * 651) + "px";
-    newSquare.style.top = parseInt(Math.random() * 251) + "px";
+    //randomize size
+    var randomSize = parseInt(Math.random() * 11) + 45; 
+    newSquare.style.height = randomSize + "px";
+    newSquare.style.width = randomSize + "px";
+    //adjust position based on size
+    var maxLeft = 700 - randomSize;
+    var maxTop = 300 - randomSize;
+    // use new max values for position
+    newSquare.style.left = parseInt(Math.random() * maxLeft) + "px"; 
+    newSquare.style.top = parseInt(Math.random() * maxTop) + "px"; 
     newSquare.style.backgroundColor = getRandomColor();
-    // adding onclick behavior
+    //adding onclick behavior
     newSquare.onclick = squareOnClick;
     squarearea.appendChild(newSquare);
 }
