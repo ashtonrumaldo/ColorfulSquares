@@ -1,3 +1,5 @@
+let zIndexCounter = 1;
+
 window.onload = function () {
     //onload already updated from the previous steps/commits
     var add = document.getElementById("add");
@@ -16,7 +18,7 @@ window.onload = function () {
 function changeColors() {
     var allSquares = document.getElementsByClassName("square");
 
-    for (var i=0;i<allSquares.length;i++) {
+    for (var i = 0; i < allSquares.length; i++) {
         allSquares[i].style.backgroundColor = getRandomColor();
     }
 }
@@ -38,5 +40,23 @@ function addSquare() {
     newSquare.style.left = parseInt(Math.random() * 651) + "px";
     newSquare.style.top = parseInt(Math.random() * 251) + "px";
     newSquare.style.backgroundColor = getRandomColor();
+    // adding onclick behavior
+    newSquare.onclick = squareOnClick;
     squarearea.appendChild(newSquare);
+}
+
+function squareOnClick() {
+    var clickedSquare = this;
+
+    if (parseInt(clickedSquare.style.zIndex) === zIndexCounter) {
+        // delete square second click
+        var parent = document.getElementById("squarearea");
+        parent.removeChild(clickedSquare);
+    }
+
+    else {
+        // bring square to forefront first click
+        zIndexCounter++;
+        clickedSquare.style.zIndex = zIndexCounter;
+    }
 }
