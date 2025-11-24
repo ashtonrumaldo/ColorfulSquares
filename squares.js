@@ -1,4 +1,5 @@
 window.onload = function () {
+    //onload already updated from the previous steps/commits
     var add = document.getElementById("add");
     add.onclick = addSquare;
 
