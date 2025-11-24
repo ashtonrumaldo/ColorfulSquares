@@ -1,12 +1,25 @@
 window.onload = function () {
     var add = document.getElementById("add");
     add.onclick = addSquare;
+
+    var buttonColor = document.getElementById("colors");
+    buttonColor.onclick = changeColors;
+
     var squareCount = parseInt(Math.random() * 21) + 30
 
     for (let i = 0; i < squareCount; i++) {
         addSquare();
     }
 }
+
+function changeColors() {
+    var allSquares = document.getElementsByClassName("square");
+
+    for (var i=0;i<allSquares.length;i++) {
+        allSquares[i].style.backgroundColor = getRandomColor();
+    }
+}
+
 
 function getRandomColor() {
     var possibilities = "0123456789ABCDEF";
